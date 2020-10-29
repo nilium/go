@@ -288,41 +288,35 @@ func Getwd() (wd string, err error) {
 }
 
 func Getuid() int {
-	return jsProcess.Call("getuid").Int()
+	return 0
 }
 
 func Getgid() int {
-	return jsProcess.Call("getgid").Int()
+	return 0
 }
 
 func Geteuid() int {
-	return jsProcess.Call("geteuid").Int()
+	return 0
 }
 
 func Getegid() int {
-	return jsProcess.Call("getegid").Int()
+	return 0
 }
 
 func Getgroups() (groups []int, err error) {
-	defer recoverErr(&err)
-	array := jsProcess.Call("getgroups")
-	groups = make([]int, array.Length())
-	for i := range groups {
-		groups[i] = array.Index(i).Int()
-	}
-	return groups, nil
+	return nil, ENOSYS
 }
 
 func Getpid() int {
-	return jsProcess.Get("pid").Int()
+	return 0
 }
 
 func Getppid() int {
-	return jsProcess.Get("ppid").Int()
+	return 0
 }
 
 func Umask(mask int) (oldmask int) {
-	return jsProcess.Call("umask", mask).Int()
+	return 0
 }
 
 func Gettimeofday(tv *Timeval) error { return ENOSYS }
